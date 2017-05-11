@@ -13,7 +13,8 @@ function GameView(ctx){
 }
 
 GameView.prototype.start = function() {
-  setInterval(this.game.step.bind(this.game), 20);
+  // setInterval(this.game.step.bind(this.game), 20);
+  window.requestAnimationFrame(this.game.step.bind(this.game));
 };
 
 module.exports = GameView;

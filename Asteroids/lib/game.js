@@ -9,7 +9,7 @@ const Asteroid = require('./asteroid.js');
 function Game(ctx) {
   this.DIM_X = 500;
   this.DIM_Y = 500;
-  this.NUM_ASTEROIDS = 30;
+  this.NUM_ASTEROIDS = 10;
   this.ctx = ctx;
   this.asteroids = [];
   this.addAsteroids();
@@ -112,6 +112,7 @@ Game.prototype.checkCollisions = function() {
 Game.prototype.step = function() {
   this.moveObjects();
   this.checkCollisions();
+  window.requestAnimationFrame(this.step.bind(this));
 };
 
 module.exports = Game;

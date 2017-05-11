@@ -197,7 +197,8 @@ function GameView(ctx){
 }
 
 GameView.prototype.start = function() {
-  setInterval(this.game.step.bind(this.game), 20);
+  // setInterval(this.game.step.bind(this.game), 20);
+  window.requestAnimationFrame(this.game.step.bind(this.game));
 };
 
 module.exports = GameView;
@@ -218,7 +219,7 @@ const Asteroid = __webpack_require__(0);
 function Game(ctx) {
   this.DIM_X = 500;
   this.DIM_Y = 500;
-  this.NUM_ASTEROIDS = 30;
+  this.NUM_ASTEROIDS = 10;
   this.ctx = ctx;
   this.asteroids = [];
   this.addAsteroids();
@@ -321,6 +322,7 @@ Game.prototype.checkCollisions = function() {
 Game.prototype.step = function() {
   this.moveObjects();
   this.checkCollisions();
+  window.requestAnimationFrame(this.step.bind(this));
 };
 
 module.exports = Game;
